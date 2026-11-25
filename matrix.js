@@ -3,7 +3,7 @@ export function startMatrix(state, clearAnimation) {
 
     const canvas = state.getAsciiCanvas();
     const width = 222;
-    const height = 60;
+    const height = 80;
     const DEFAULT_CHARS = 'ｦｧｨｩｪｫｬｭｮｯｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ0123456789';
 
     const screen = Array.from({ length: height }, () => new Array(width).fill(' '));
