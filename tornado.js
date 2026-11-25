@@ -3,8 +3,8 @@ export function startTornado(state, clearAnimation) {
 
     const canvas = state.getAsciiCanvas();
     const DEFAULT_RAMP = '.:-=+*#%@';
-    const cols = 152;
-    const rows = 64;
+    const cols = 259;
+    const rows = 60;
 
     const debris = Array.from({ length: 75 }, (_, i) => ({
         angle: (i / 75) * Math.PI * 2 + Math.random() * 0.5,
@@ -41,10 +41,10 @@ export function startTornado(state, clearAnimation) {
             const y = Math.floor(p.yNorm * (rows - 1));
             const hFromBottom = 1 - p.yNorm;
             const sway =
-                Math.sin(p.yNorm * 4.5 - time * 1.4) * (5 + hFromBottom * 6) +
-                Math.cos(p.yNorm * 2.2 + time * 0.8) * 3;
+                Math.sin(p.yNorm * 4.5 - time * 1.4) * (6 + hFromBottom * 7) +
+                Math.cos(p.yNorm * 2.2 + time * 0.8) * 3.5;
             const centerX = cols * 0.5 + sway;
-            const funnelR = (4.5 + Math.pow(hFromBottom, 1.85) * 34) * p.radiusMult;
+            const funnelR = (4.8 + Math.pow(hFromBottom, 1.85) * 36) * p.radiusMult;
             const x = Math.round(centerX + Math.cos(p.angle) * funnelR);
             const depth = Math.sin(p.angle);
 
@@ -66,10 +66,10 @@ export function startTornado(state, clearAnimation) {
             const rowOffset = y * cols;
 
             const sway =
-                Math.sin(yNorm * 4.5 - time * 1.4) * (5 + hFromBottom * 6) +
-                Math.cos(yNorm * 2.2 + time * 0.8) * 3;
+                Math.sin(yNorm * 4.5 - time * 1.4) * (6 + hFromBottom * 7) +
+                Math.cos(yNorm * 2.2 + time * 0.8) * 3.5;
             const centerX = cols * 0.5 + sway;
-            const baseRadius = 4.2 + Math.pow(hFromBottom, 1.85) * 34;
+            const baseRadius = 4.5 + Math.pow(hFromBottom, 1.85) * 36;
 
             let currentColor = '';
             let run = '';
@@ -135,7 +135,7 @@ export function startTornado(state, clearAnimation) {
                         color = `rgb(${v},${Math.min(200, v + 8)},${Math.min(216, v + 24)})`;
                         ch = rampChars[Math.floor(shade * rampLen)] || rampChars[rampLen - 1];
                     } else if (yNorm > 0.87) {
-                        const dustR = 26 + Math.sin(time * 2 + y) * 3;
+                        const dustR = 28 + Math.sin(time * 2 + y) * 3;
                         const distRatio = absDx / dustR;
                         const groundLevel = (yNorm - 0.87) / 0.13;
                         if (distRatio < 1.25) {
